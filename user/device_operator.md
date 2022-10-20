@@ -20,6 +20,8 @@ floto login --credentials --email $FLOTO_USER --password $FLOTO_PASS
 ```
 
 After, you can use the `floto` command as you would normally run `balena`.
+If you are sshed into `floto.science`, the `floto` alias will be set up
+automatically.
 
 ## Dashboard Access
 
@@ -32,13 +34,16 @@ on the dashboard login page.
 ## SSH Access to a Device
 
 To gain access to a device first, you need to `tunnel` using the device ID.
-This command, will create a tunnel from the
-device to the `floto.science` host, and then use SSH to forward this to your
-local machine. Here, the port 8029 is arbitrary, and can be changed to anything.
-`ssh -L 8029:127.0.0.1:8029 floto@floto.science "floto tunnel $DEVICE_ID --port 22222:8029"`
+First ssh to the floto.science host, which has an admin key for the devices.
 
-After running this, you can SSH through the tunnel:
-`ssh root@localhost -p 8029`
+Then create the ssh tunnel by running `~/tunnel.sh`. This will tunnel the device
+ssh port (22222) to the local port 8029.
+
+After running this, you can SSH through the tunnel using the admin key:
+`ssh -i ~/.ssh/floto_admin root@localhost -p 8029`
+
+The port 8029 is arbitrary here, any unused port will work. The `tunnel.sh`
+script uses 8029 by default.
 
 ### Container Access
 
