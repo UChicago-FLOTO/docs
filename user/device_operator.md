@@ -25,7 +25,7 @@ automatically.
 
 ## Dashboard Access
 
-The dashboard is hosted [here](https://admin.floto.science:8080/).
+The dashboard is hosted [here](https://admin.floto.science/).
 To use the dashboard, first extract the password via 
 `ssh floto@floto.science cat passwd`.
 Then you can login with this password and the username `root@floto.science` to
