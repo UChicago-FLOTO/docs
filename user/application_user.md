@@ -2,7 +2,7 @@
 
 Measurement applications can be deployed on FLOTO for the purposes of collecting data from various edge deployments.
 
-Users can deploy applications to FLOTO using the dashboard, CLI, or API. 
+Users can deploy applications to FLOTO using the dashboard, CLI, or API. The API endpoints are documented [here](https://portal.floto.science/api/schema/swagger-ui/).
 
 There are 3 components at play in this API.
 
