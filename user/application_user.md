@@ -24,7 +24,9 @@ This section will walk you through deploying an entirely new application, all th
 
 First, navigate to the "Services" page via the navigation buttons at the top of the page. At the bottom there is a form to submit your container reference(s), and whether to make this public. 
 
-The container reference should be what you would use when running `docker pull`. If your container is not hosted on Docker Hub, make sure to include the registry url.
+The container reference should be what you would use when running `docker pull`. If your container is not hosted on Docker Hub, make sure to include the registry url. If your container registry is private, please contact us to set up secret access.
+
+It is important this container be built for ARM architecture, so that it can run on our devices.
 
 ### Create an application
 
