@@ -28,6 +28,8 @@ The container reference should be what you would use when running `docker pull`.
 
 It is important this container be built for ARM architecture, so that it can run on our devices.
 
+If your service requires any types of peripherals, you can select these from a list when creating your service. Your service will only be able to run on devices with this peripheral type configured.
+
 ### Create an application
 
 Next, navigate to the "Application" page. At the bottom, you'll first need to enter a name and a description for you application. Then, click "continue" to move onto the next step. Select at least one service for your application to run. On the next step, you'll be asked to define environment variables. These will be set the same in all services, on all devices.
