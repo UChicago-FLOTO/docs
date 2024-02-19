@@ -25,11 +25,7 @@ automatically.
 
 ## Dashboard Access
 
-The dashboard is hosted [here](https://admin.floto.science/).
-To use the dashboard, first extract the password via 
-`ssh floto@staff.floto.science cat passwd`.
-Then you can login with this password and the username `root@floto.science` to
-on the dashboard login page.
+After signing into portal.floto.science, you can be made staff via the admin portal. Ask an existing admin to make you staff and superuser.
 
 ## SSH Access to a Device
 
@@ -51,5 +47,3 @@ After getting SSH access to a device you can run `balena ps` to see the
 containers on the device. This will show the container name. Then you can run a
 command in the container, like you would with `docker exec`. For example:
 `balena exec -it $CONTAINER_NAME bash`
-
-

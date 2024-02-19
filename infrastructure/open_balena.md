@@ -11,6 +11,17 @@ openBalena has some limitations, and does not have 100% parity with the features
 
 See design documents [here](https://docs.google.com/document/d/1DJxb6h85yIabu2j3ZOlZpOkw75D49J9qSb1xut9EiDw/edit#heading=h.cb7ogod5jgpc)
 
+# Services
+
+- `api` - Runs the openBalena API
+- `db` - The datbase for the API
+- `vpn` - The VPN that connects to each device
+- `s3` - We use AWS for s3, rather than running our own service.
+- `registry` - The registry of fleet application releases, which stores data on s3.
+- `haproxy` - The HAProxy instance that the other services run behind.
+
+Cert-manager is used to automatically manage certificates.
+
 # OpenBalena Infrastructure
 OpenBalena is running on a kubernetes cluster. This section describes how it was set up and it's usage.
 
