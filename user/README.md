@@ -2,7 +2,7 @@
 
 This guide will walk you through the initial steps of setting up a device, getting access to the FLOTO dashboard, and deploying an application to it.
 
-### Step 1: Adding a device
+## Step 1: Adding a device
 
 To add your own device to FLOTO, you'll need a preconfigured kit given to you from the FLOTO team.  If you instead wish to bring your own device to FLOTO, please contact us.
 
@@ -41,7 +41,7 @@ Once granted access, you only be able to access devices that device operators ha
 
 > ⚠️ Make sure that your project name is active before continuing. It should appear in the middle of the top navigation bar. If it does not, [go to your profile](http://localhost:8080/dashboard/user), and click "Set Active Project"
 
-### Step 3: Deploying an application
+## Step 3: Deploying an application
 
 In this step, we'll deploy an application called [Netrics](https://github.com/internet-equity/netrics) that runs various network measurements, such as ping and bandwidth. 
 
@@ -54,7 +54,7 @@ In order to deploy the application onto a device, navigate to the [jobs page](ht
 
 If you scroll back up to the top of the page, you'll see your job in the first row of the "My Jobs" table. On the very right of this table (you may need to horizontally scroll depending on your screen), click on the "eye" icon in your job's row. This shows your job's overview. Under "Events" you should see that the service containers were deployed successfully. Your device now is collecting broadband data.
 
-### Step 4: Viewing collected data
+## Step 4: Viewing collected data
 
 The application from step 3 has two services. The first is the container collects the network measurements. The second, we'll use in this step. It runs a local web server, that displays the results of the network measurements, which listens on port 30001. If you are on the same local network as your device, you'll be able to connect to it.
 
@@ -62,13 +62,13 @@ On the [device overview page](https://portal.floto.science/dashboard/devices), f
 
 ![Latency display](./images/latency_screenshot.png)
 
-### Step 5 (optional): Uploading collected data
+## Step 5 (optional): Uploading collected data
 
 As mentioned before, the application from step 3 runs two services, one to collect network measurements, and another that runs the dashboard webserver. Under the hood, this works [via a shared volume between the two services](https://github.com/UChicago-FLOTO/docs/blob/master/user/application_user.md#create-an-application). The measurement results are simply written to files to this directory, and the webserver parses these and presents them in a user friendly way. 
 
 If you are interested in the data from these raw files, one way to access it would be to run an additional service that uploads these to some cloud storage. For such purposes, we have a sample service [data_uploader](https://github.com/UChicago-FLOTO/data_uploader/blob/main/README.md#data-uploader) that can be used. We've created another demo application which links these services together. Unlike the last application, it requires some configuration to use.
 
-#### Configuring rclone
+### Configuring rclone
 
 As described in this service's documentation, it needs an [rclone](https://rclone.org/) configuration. [Rclone's docs](https://rclone.org/docs/#configure) provide details about how to configure most cloud providers, here, I'll describe how to use storage from the Chameleon testbed. If you are using AWS, GCP, or another remote storage endpoint, follow the [instructions from rclone](https://rclone.org/docs/#configure), and then continue to the next section.
 
@@ -103,7 +103,7 @@ And then select `n` regarding advanced config. Confirm your entry with `y`, and 
 
 Confirm your configuration is correct by now running `rclone lsd floto:`. If no error occurs, everything is correct.
 
-#### Configuring the data uploader
+### Configuring the data uploader
 
 We'll now create a new job that includes the data uploader. Navigate back to [jobs page](http://localhost:8080/dashboard/jobs). This time, select "FLOTO Getting Started with Uploader" as your application. Answer as you did above in step 3 for the timing and device forms. Before submitting, on the Environment section enter the following:
 
@@ -112,7 +112,7 @@ We'll now create a new job that includes the data uploader. Navigate back to [jo
 
 Now, you can submit. It may take a few minutes, but if you now run the command `rclone lsd floto:` in your terminal, you will see data from the netrics measurements. 
 
-## Next steps
+# Next steps
 
 Please see individual pages for different FLOTO use cases. 
 You may also browse the 
