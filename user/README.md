@@ -1,29 +1,45 @@
 # Getting started
 
-This guide will walk you through the initial steps of getting access to FLOTO, setting up a device, and deploying an application to it.
+This guide will walk you through the initial steps of setting up a device, getting access to the FLOTO dashboard, and deploying an application to it.
 
-## Step 1: Access
+### Step 1: Adding a device
+
+To add your own device to FLOTO, you'll need a preconfigured kit given to you from the FLOTO team.  If you instead wish to bring your own device to FLOTO, please contact us.
+
+![FLOTO kit](./images/equipment.png)
+
+This kit will include
+1. A power adapter (black)
+2. An ethernet cable (gray)
+3. A Raspberry Pi
+
+Next, locate the source of your Internet connectivity, which will likely be a router or modem provided by your ISP. It should have ethernet ports on the back, and you will need a nearby power outlet.
+
+> ⚠️ For best results, use this device directly, and not a WiFi extender or other networking equipment. 
+
+Connect the ethernet port on your router/modem to the ethernet port on the Raspberry Pi using the gray cable.
+
+Next, connect the power adapater to the side of the Raspberry Pi, and plug it into the power outlet. 
+
+You should see a red light come on immediantly on the Pi. Next to the ethernet port on the Pi, you should also see blinking green and yellow lights.
+
+![Ethernet lights](./images/ethernet_lights.png)
+
+Next, you'll set up your dashboard account and contact us letting us know the device is ready.
+
+## Step 2: Access
 
 To get access to the FLOTO infrastructure, first visit the [dashboard](https://portal.floto.science), and then sign in with Globus Auth. This will allow you to select an organization login (typically your intitution) or via Google. 
 
+![Sign in with Globus Auth](./images/globus_auth.png)
+
 After doing this, you'll need to be granted approved to use FLOTO. To request this, please send a message to contact@floto.science from the email you signed up with. 
 
-You'll also need a project to use FLOTO. If you need a new project, please mention this during your initial message. If you are collaborating with group already using FLOTO, the PI of that group will be able to add you to it. If you are adding a device (described in the next step), please mention that as well.
+You'll also need a project to use FLOTO. If you need a new project, please mention this during your initial message. If you are collaborating with group already using FLOTO, the PI of that group will be able to add you to it. Please mention the name of any device you set up as well.
 
 Once granted access, you only be able to access devices that device operators have either made public, or given you access to. You will be able to browse the list of all devices, and filter by devices you operate and the ones you can deploy applications to. 
 
-### Step 2: Adding a device
-
-To add your own device to FLOTO, you'll need a preconfigured kit given to you from the FLOTO team. 
-
-This kit will include
-1. A power adapter
-2. An ethernet cable
-3. A Raspberry Pi
-
-TODO 
-
-If you wish to bring your own device to FLOTO, please contact us.
+> ⚠️ Make sure that your project name is active before continuing. It should appear in the middle of the top navigation bar. If it does not, [go to your profile](http://localhost:8080/dashboard/user), and click "Set Active Project"
 
 ### Step 3: Deploying an application
 
@@ -43,6 +59,8 @@ If you scroll back up to the top of the page, you'll see your job in the first r
 The application from step 3 has two services. The first is the container collects the network measurements. The second, we'll use in this step. It runs a local web server, that displays the results of the network measurements, which listens on port 30001. If you are on the same local network as your device, you'll be able to connect to it.
 
 On the [device overview page](https://portal.floto.science/dashboard/devices), find the entry of the device you selected in step 3. Select the "eye" icon to view the device's details. You will see a list of IP addresses for your device. The first entry on this list likely is the local network's IP for the device, and it will most likely start with `192.168.` or `10.0.` (any address that begins with `10.42.` are internal to FLOTO, and NOT the addresses you should use). Copy it, and in another tab go to the address `http://w.x.y.z:30001`, where `w.x.y.z` is replaced with the IP you copied. You should be taken to a web page displaying the data your device collected. It may take up to an hour for this data to propagate, as the measurements are run intermittently to avoid much network interference.
+
+![Latency display](./images/latency_screenshot.png)
 
 ### Step 5 (optional): Uploading collected data
 
