@@ -1,10 +1,16 @@
 # Getting Started
 
-This guide will walk you through the initial steps of setting up a device, getting access to the FLOTO dashboard, and deploying an application to it.
+This guide will walk you through the initial steps of setting up a device, getting access to the FLOTO portal, and deploying an application to it.
 
-## Step 1: Setting Up a Device
+## Step 1: Obtaining a Device
 
-The fastest way to get set up with a device is to contact us at contact@floto.science and request a pre-assembled FLOTO device kit with all the hardware and software you'll need out of the box. If you instead wish to add your own device to FLOTO, please contact us at the same email and we will send you the base image to flash your device.
+If you have previously spoken to a member of the FLOTO project team about receiving some devices for a demo, you can skip to the next step. If you are interested in obtaining some devices (either for demoing FLOTO or for supporting a larger research project), you should first submit a [device request form](https://voices.uchicago.edu/floto/deployment/apply-for-floto-devices/) on our FLOTO website.
+
+If you instead wish to add your own device to FLOTO, please contact us at [contact@floto.science](mailto:contact@floto.science) with information about your project and needs for using FLOTO with your own hardware.
+
+## Step 2: Setting up a Device
+
+If you are at this step, you have already received a FLOTO kit with a device. In this step, we will walk you through how to install the device.
 
 ![FLOTO kit](./images/equipment.png)
 
@@ -13,7 +19,7 @@ The FLOTO kit, pictured above, will include:
 2. An ethernet cable (gray)
 3. A Raspberry Pi
 
-Once you have a FLOTO kit, you will neeed to install the device on a router or router/modem combo to connect it to the Internet. First, at the location where you wish to deploy the device, locate the source of your Internet connectivity.
+You will neeed to install the device on a router or router/modem combo to connect it to the Internet. At the location where you wish to deploy the device, locate the source of your Internet connectivity.
 
 > ⚠️ Do not connect the device to a WiFi extender or other networking equipment other than a router or modem/router combo. This is particularly important for collecting sound Internet performance data using the device. 
 
@@ -25,7 +31,7 @@ You should see a red light come on immediantly on the Pi. Next to the ethernet p
 
 Next, you'll set up your FLOTO portal account.
 
-## Step 2: Portal Access
+## Step 3: Portal Access
 
 To get access to the FLOTO infrastructure, first visit the [portal](https://portal.floto.science), and then sign in with Globus Auth. This will allow you to select an organization login (typically your intitution) or via Google. 
 
@@ -39,7 +45,7 @@ Once granted access, you only be able to access devices that device operators ha
 
 > ⚠️ Make sure that your project name is active before continuing. It should appear in the middle of the top navigation bar. If it does not, [go to your profile](http://portal.floto.science/dashboard/user), and click "Set Active Project"
 
-## Step 3: Deploying an Application
+## Step 4: Deploying an Application
 
 In this step, we'll deploy an application called [Netrics](https://github.com/internet-equity/netrics) that runs various network measurements, such as ping and speed tests. 
 
@@ -52,7 +58,7 @@ To deploy the application onto a device, navigate to the [jobs page](http://port
 
 If you scroll back up to the top of the page, you'll see your job in the first row of the "My Jobs" table. On the very right of this table (you may need to horizontally scroll depending on your screen), click on the "eye" icon in your job's row. This shows your job's overview. Under "Events" you should see that the service containers were deployed successfully. Your device now is collecting broadband data.
 
-## Step 4: Viewing Collected Data
+## Step 5: Viewing Collected Data
 
 The application from step 3 has two services. The first is the container that collects the network measurements. The second container runs a local web server to display a dashboard with the results of your local network measurements. The web server serves the dashboard at a local domain listening on port 30001. If you are on the same local network as your device, you'll be able to connect to the dashboard.
 
@@ -60,9 +66,9 @@ On the [device overview page](https://portal.floto.science/dashboard/devices), f
 
 ![Latency display](./images/latency_screenshot.png)
 
-## Step 5 (optional): Uploading collected data
+## Step 6 (optional): Uploading collected data
 
-As mentioned before, the application from step 3 runs two services, one to collect network measurements, and another that runs the dashboard webserver. Under the hood, this works [via a shared volume between the two services](https://github.com/UChicago-FLOTO/docs/blob/master/user/application_user.md#create-an-application). The measurement results are simply written to files to this directory, and the web server parses these and presents them in a user friendly way. 
+As mentioned before, the application from step 3 runs two services, one to collect network measurements, and another that runs the dashboard web server. Under the hood, this works [via a shared volume between the two services](https://github.com/UChicago-FLOTO/docs/blob/master/user/application_user.md#create-an-application). The measurement results are simply written to files to this directory, and the web server parses these and presents them in a user friendly way. 
 
 If you are interested in the data from these raw files, one way to access it would be to run an additional service that uploads these to a cloud storage. For such purposes, we have a sample service [data_uploader](https://github.com/UChicago-FLOTO/data_uploader/blob/main/README.md#data-uploader) that can be used. We've created another demo application which links these services together. Unlike the last application, it requires some configuration to use.
 
