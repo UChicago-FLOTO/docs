@@ -14,7 +14,7 @@ On the dashboard, first navigate to the "Devices" page to see all devices. Selec
 
 ### Configuring peripherals
 
-On the management page for a device, on the right side, you'll see a section for "Peripherals." This allows you to register attached peripherals on your device, and if nessecary add further configuration about how the device is installed. This configuration will allow applications to use your device.
+On the management page for a device, on the right side, you'll see a section for "Peripherals." This allows you to register attached peripherals on your device, and if necessary add further configuration about how the device is installed. This configuration will allow applications to use your device.
 
 To add a device, select "Add new peripheral". In the popup, you can either select an existing peripheral if one has been configured on FLOTO. Otherwise, you can create one from scratch by selecting the peripheral type. This will require you to enter the name of the peripheral (such as Raspberry Pi Camera Module) and a link to documentation for the peripheral. If the peripheral type selected requires further configuration options, you'll be asked to enter them.
 
