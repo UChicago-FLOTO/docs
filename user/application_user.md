@@ -42,7 +42,7 @@ In addition to any environment variables defined here, and later in the job, we 
 * `FLOTO_JOB_UUID`: The UUID of the job that created your container.
 * `FLOTO_`: Other variables prefixed with `FLOTO_` may appear, depending on the specific device configuration, as defined by the device's operator.
 
-If your application requires secret values, such as S3 secrets, consider leaving them as blank. They can be overriden in a private job.
+If your application requires secret values, such as S3 secrets, consider leaving them as blank. They can be overrode in a private job.
 
 A volume shared between your services will be mounted at `/share`.
 

@@ -19,9 +19,9 @@ Next, locate the source of your Internet connectivity, which will likely be a ro
 
 Connect the ethernet port on your router/modem to the ethernet port on the Raspberry Pi using the gray cable.
 
-Next, connect the power adapater to the side of the Raspberry Pi, and plug it into the power outlet. 
+Next, connect the power adapter to the side of the Raspberry Pi, and plug it into the power outlet. 
 
-You should see a red light come on immediantly on the Pi. Next to the ethernet port on the Pi, you should also see blinking green and yellow lights.
+You should see a red light come on immediately on the Pi. Next to the ethernet port on the Pi, you should also see blinking green and yellow lights.
 
 ![Ethernet lights](./images/ethernet_lights.png)
 
@@ -29,7 +29,7 @@ Next, you'll set up your dashboard account and contact us letting us know the de
 
 ## Step 2: Access
 
-To get access to the FLOTO infrastructure, first visit the [dashboard](https://portal.floto.science), and then sign in with Globus Auth. This will allow you to select an organization login (typically your intitution) or via Google. 
+To get access to the FLOTO infrastructure, first visit the [dashboard](https://portal.floto.science), and then sign in with Globus Auth. This will allow you to select an organization login (typically your institution) or via Google. 
 
 ![Sign in with Globus Auth](./images/globus_auth.png)
 
