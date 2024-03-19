@@ -23,9 +23,9 @@ You will neeed to install the device on a router or router/modem combo to connec
 
 > ⚠️ Do not connect the device to a WiFi extender or other networking equipment other than a router or modem/router combo. This is particularly important for collecting sound Internet performance data using the device. 
 
-Connect the ethernet port on your router/modem to the ethernet port on the Raspberry Pi using the gray cable. Next, connect the power adapater to the side of the Raspberry Pi, and plug it into the power outlet. 
+Connect the ethernet port on your router/modem to the ethernet port on the Raspberry Pi using the gray cable. Next, connect the power adapter to the side of the Raspberry Pi, and plug it into the power outlet. 
 
-You should see a red light come on immediantly on the Pi. Next to the ethernet port on the Pi, you should also see blinking green and yellow lights.
+You should see a red light come on immediately on the Pi. Next to the ethernet port on the Pi, you should also see blinking green and yellow lights.
 
 ![Ethernet lights](./images/ethernet_lights.png)
 
@@ -33,7 +33,7 @@ Next, you'll set up your FLOTO portal account.
 
 ## Step 3: Portal Access
 
-To get access to the FLOTO infrastructure, first visit the [portal](https://portal.floto.science), and then sign in with Globus Auth. This will allow you to select an organization login (typically your intitution) or via Google. 
+To get access to the FLOTO infrastructure, first visit the [portal](https://portal.floto.science), and then sign in with Globus Auth. This will allow you to select an organization login (typically your institution) or via Google. 
 
 ![Sign in with Globus Auth](./images/globus_auth.png)
 
