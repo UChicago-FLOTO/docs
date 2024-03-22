@@ -30,11 +30,15 @@ It is important this container be built for ARM architecture, so that it can run
 
 If your service requires any types of peripherals, you can select these from a list when creating your service. Your service will only be able to run on devices with this peripheral type configured.
 
+If your service wants single-tenancy over any type of resource, select the type of resource. This metadata allows us to avoid scheduling applications at the same time that might be affected by the presence of others. For example, if you are collecting network bandwidth information, you will likely not want others to run bandwidth tests simultaneously, but it may be OK to run this at the same time another application reads from a sensor. If your application generally requires single-tenancy, you can enable this when submitting an "application."
+
 If your service needs to expose ports on the local network, you can configure this. For each port, select the protocol (TCP/UDP), the port for the device to listen on (limited to 30000-32768), and the port inside your service to forward traffic to. Then click "Add Port"
 
 ### Create an application
 
-Next, navigate to the "Application" page. At the bottom, you'll first need to enter a name and a description for you application. Then, click "continue" to move onto the next step. Select at least one service for your application to run. On the next step, you'll be asked to define environment variables. These will be set the same in all services, on all devices.
+Next, navigate to the "Application" page. At the bottom, you'll first need to enter a name and a description for you application. By default, your application will be "single-tenant", meaning no other applications can be scheduled on the same device while your application is running. This can be unchecked on this page. Then, click "continue" to move onto the next step. 
+
+Select at least one service for your application to run. On the next step, you'll be asked to define environment variables. These will be set the same in all services, on all devices.
 
 In addition to any environment variables defined here, and later in the job, we will also set the following in your containers:
 
@@ -44,7 +48,7 @@ In addition to any environment variables defined here, and later in the job, we 
 
 If your application requires secret values, such as S3 secrets, consider leaving them as blank. They can be overrode in a private job.
 
-A volume shared between your services will be mounted at `/share`.
+An ephemeral volume shared only between your services will be mounted at `/share`. Additionally, there is a shared, persistent volume mounted at `/public`. This directory is shared between all application services running on the device, and does not get automatically cleaned up.
 
 ### Create a job
 
