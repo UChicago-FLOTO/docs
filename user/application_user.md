@@ -30,8 +30,6 @@ It is important this container be built for ARM architecture, so that it can run
 
 If your service requires any types of peripherals, you can select these from a list when creating your service. Your service will only be able to run on devices with this peripheral type configured.
 
-If your service wants single-tenancy over any type of resource, select the type of resource. This metadata allows us to avoid scheduling applications at the same time that might be affected by the presence of others. For example, if you are collecting network bandwidth information, you will likely not want others to run bandwidth tests simultaneously, but it may be OK to run this at the same time another application reads from a sensor. If your application generally requires single-tenancy, you can enable this when submitting an "application."
-
 If your service needs to expose ports on the local network, you can configure this. For each port, select the protocol (TCP/UDP), the port for the device to listen on (limited to 30000-32768), and the port inside your service to forward traffic to. Then click "Add Port"
 
 ### Create an application
@@ -48,7 +46,9 @@ In addition to any environment variables defined here, and later in the job, we 
 
 If your application requires secret values, such as S3 secrets, consider leaving them as blank. They can be overrode in a private job.
 
-An ephemeral volume shared only between your services will be mounted at `/share`. Additionally, there is a shared, persistent volume mounted at `/public`. This directory is shared between all application services running on the device, and does not get automatically cleaned up.
+A shared ephemeral volume will be mounted to `/share` inside each of the services in your application at runtime, per device. The underlying filesystem in this volume is located on the host device, and supports simultaneous read/write from multiple conatiners, sutiable for locking. When your job ends, the data in this path is deleted.
+
+A perisistant volume will be mounted to `/public` inside each of the services in your application at runtime, per device. This directory is shared across all jobs on the device, from all users, not just the ones in your application. The intend use of this volume is a place to store data, which is later consumed by another application, for example a periodic data uploader. The data in this volume is not deleted when your job ends, can be read or overwritten by other applications, due to the multi-tenant environment.
 
 ### Create a job
 
