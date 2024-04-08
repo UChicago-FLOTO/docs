@@ -34,7 +34,9 @@ If your service needs to expose ports on the local network, you can configure th
 
 ### Create an application
 
-Next, navigate to the "Application" page. At the bottom, you'll first need to enter a name and a description for you application. Then, click "continue" to move onto the next step. Select at least one service for your application to run. On the next step, you'll be asked to define environment variables. These will be set the same in all services, on all devices.
+Next, navigate to the "Application" page. At the bottom, you'll first need to enter a name and a description for you application. By default, your application will be "single-tenant", meaning no other applications can be scheduled on the same device while your application is running. This can be unchecked on this page. Then, click "continue" to move onto the next step. 
+
+Select at least one service for your application to run. On the next step, you'll be asked to define environment variables. These will be set the same in all services, on all devices.
 
 In addition to any environment variables defined here, and later in the job, we will also set the following in your containers:
 
@@ -44,7 +46,9 @@ In addition to any environment variables defined here, and later in the job, we 
 
 If your application requires secret values, such as S3 secrets, consider leaving them as blank. They can be overrode in a private job.
 
-A volume shared between your services will be mounted at `/share`.
+A shared ephemeral volume will be mounted to `/share` inside each of the services in your application at runtime, per device. The underlying filesystem in this volume is located on the host device, and supports simultaneous read/write from multiple conatiners, sutiable for locking. When your job ends, the data in this path is deleted.
+
+A perisistant volume will be mounted to `/public` inside each of the services in your application at runtime, per device. This directory is shared across all jobs on the device, from all users, not just the ones in your application. The intend use of this volume is a place to store data, which is later consumed by another application, for example a periodic data uploader. The data in this volume is not deleted when your job ends, can be read or overwritten by other applications, due to the multi-tenant environment.
 
 ### Create a job
 
