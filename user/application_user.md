@@ -12,6 +12,12 @@ There are 3 components at play in this API.
 
 Each of these components can be made public, meaning all FLOTO users can see the details, or private, meaning only the creator can see the details. For example, if your application requires environment secrets, these can be added to a private job, while the application kept public. Other users will be able to use the public application in their own private jobs.
 
+# Developing your application
+
+FLOTO is not intended as a development environment. At the very least, we recommend that you develop your docker image on your local machine to verify that it is working as expected before submitting it to the FLOTO portal.
+
+If you wish you test out your application on a Raspberry Pi, we've published [this CHI@Edge notebook](https://chameleoncloud.org/experiment/share/c4a7e4ac-1380-4e8f-9fc9-b2a84750739c), which will allow you to launch and interact with a container in a very similar environment to FLOTO. CHI@Edge has the same container runtime architecture as FLOTO, and so if your container runs on CHI@Edge, it likely will work on FLOTO.
+
 # Using the Dashboard
 
 The [FLOTO dashboard](https://portal.floto.science/) requires you to have an approved account to use. After initial login with your institutional account, please contact an admin.
