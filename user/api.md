@@ -21,3 +21,14 @@ curl -v -L \
         http://localhost:8080/api/services/
 ```
 
+## Use case: Getting device metadata
+
+[./application_user.md#create-an-application](During application runtime), your service can know the device it is running on via the `FLOTO_DEVICE_UUID` environment variable. If you need more metadata regarding the device, you can get it by using the [device retrieve API endpoint](https://portal.floto.science/api/schema/swagger-ui/#/devices/devices_retrieve). For example, if you want to fetch the approximate geocoordinates of the device, the following command parses this information:
+
+```
+curl -sL -X GET \
+    https://portal.floto.science/api/devices/e7bcc58048c42bfbbd42b7c85a7ac479 |\
+    jq -r '"\(.latitude), \(.longitude)"'
+```
+
+For the full schema of the device, see the [API endpoint documentation](https://portal.floto.science/api/schema/swagger-ui/#/devices/devices_retrieve).
