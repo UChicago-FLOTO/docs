@@ -12,6 +12,14 @@ There are 3 components at play in this API.
 
 Each of these components can be made public, meaning all FLOTO users can see the details, or private, meaning only the creator can see the details. For example, if your application requires environment secrets, these can be added to a private job, while the application kept public. Other users will be able to use the public application in their own private jobs.
 
+# Developing your application
+
+FLOTO is not intended as a development environment. We recommend developing your docker image on your local machine to ensure it works as expected before submitting it to the FLOTO portal.
+
+If you wish to test out your application on a Raspberry Pi, we recommend that you first deploy your container on [CHI@Edge](https://www.chameleoncloud.org/experiment/chiedge/), a Chameleon testbed that provides support for edge computing experiments. CHI@Edge is free for researchers and educators after creating a [Chameleon account](https://chameleoncloud.readthedocs.io/en/latest/getting-started/index.html). We've published [this CHI@Edge notebook](https://chameleoncloud.org/experiment/share/c4a7e4ac-1380-4e8f-9fc9-b2a84750739c), which will guide you through launching and interacting with a container in a very similar environment to FLOTO. CHI@Edge has the same container runtime architecture as FLOTO. If your container runs on CHI@Edge, it will likely work on FLOTO.
+
+Testing locally and on CHI@Edge can help reduce the amount of debugging and eliminate other sources of runtime errors before deploying at scale on FLOTO.
+
 # Using the Dashboard
 
 The [FLOTO dashboard](https://portal.floto.science/) requires you to have an approved account to use. After initial login with your institutional account, please contact an admin.
