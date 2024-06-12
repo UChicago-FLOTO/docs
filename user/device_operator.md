@@ -8,6 +8,17 @@ Contact us to enroll a new device. We will provide details of how to flash an OS
 
 Once your device is networking, please coordinate with us to assign it to your project to ensure proper authorization is set up for its usage.
 
+### Network traffic
+In order for FLOTO devices to work, the following network traffic must be permitted.
+
+|Port|Protocol|Source|Dest|Description|
+|---|---|---|---|---|
+|443|TCP||{api,auth,k3s,portal,registry,s3,tunnel,vpn}.floto.science|HTTPS traffic to FLOTO services|
+|443|TCP||{}.floto.science||
+|6443|TCP||k3s-{01,02,03}.floto.science|HTTPS traffic to application control plane|
+|51820|UDP||k3s-{01,02,03}.floto.science|VPN connection|
+
+
 ## Using the Dashboard
 
 On the dashboard, first navigate to the "Devices" page to see all devices. Select the "wrench" icon next to a device to see its overview. This will let you see various properties about the device, including its MAC and IP addresses. It also shows the device environment variables. There are two additional tabs, the first is the "Command" tab, which lets you run one off commands on the device. The next is the "Logs" tab, which shows the last 1000 lines of logs from the device.
