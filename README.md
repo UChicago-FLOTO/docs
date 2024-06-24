@@ -7,3 +7,5 @@ Users on FLOTO come in many types. Some manage device deployments, some write ap
 If you are interested in becoming a FLOTO user, see our [getting started guide](user/README.md).
 
 If you are interested in operating the infrastructure that runs FLOTO, see our [infrastructure documentation](infrastructure/README.md)
+
+If you want to contribute to FLOTO, see our [contributing guide](CONTRIBUTING.md).
