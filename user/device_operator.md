@@ -8,6 +8,18 @@ Contact us to enroll a new device. We will provide details of how to flash an OS
 
 Once your device is networking, please coordinate with us to assign it to your project to ensure proper authorization is set up for its usage.
 
+### Network traffic
+FLOTO devices don't need to accept any inbound connections, but do need to send egress traffic to the following destinations in order for the platform to work.
+
+|Port|Protocol|Destination|Description|
+|---|---|---|---|
+|443|TCP|{api,auth,k3s-ipv6,portal,registry,s3,tunnel,vpn}.floto.science|HTTPS traffic to FLOTO services|
+|3128|TCP|vpn.floto.science|Remote command/control capabilities of device OS|
+|6443|TCP|k3s-server{01,02,03}.floto.science|HTTPS traffic to application control plane|
+|51820|UDP|k3s-server{01,02,03}.floto.science|VPN connection for application deployment|
+
+Additionally, in order for applications to start your device will need to pull the image from a docker registry. Applications running on your device likely will need to access the internet, for example to upload experiment results to S3. We recommend allowing all traffic to public internet, though if you are the only application user for a device, you can restrict this egress without breaking anything.
+
 ## Using the Dashboard
 
 On the dashboard, first navigate to the "Devices" page to see all devices. Select the "wrench" icon next to a device to see its overview. This will let you see various properties about the device, including its MAC and IP addresses. It also shows the device environment variables. There are two additional tabs, the first is the "Command" tab, which lets you run one off commands on the device. The next is the "Logs" tab, which shows the last 1000 lines of logs from the device.
