@@ -9,16 +9,16 @@ Contact us to enroll a new device. We will provide details of how to flash an OS
 Once your device is networking, please coordinate with us to assign it to your project to ensure proper authorization is set up for its usage.
 
 ### Network traffic
-In order for FLOTO devices to work, the following network traffic must be permitted.
+FLOTO devices don't need to accept any inbound connections, but do need to send egress traffic to the following destinations in order for the platform to work.
 
-|Port|Protocol|Source|Dest|Description|
-|---|---|---|---|---|
-|443|TCP|device|{api,auth,k3s-ipv6,portal,registry,s3,tunnel,vpn}.floto.science|HTTPS traffic to FLOTO services|
-|3128|TCP|device|vpn.floto.science|Remote command/control capabilities of device OS|
-|6443|TCP|device|k3s-server{01,02,03}.floto.science|HTTPS traffic to application control plane|
-|51820|UDP|device|k3s-server{01,02,03}.floto.science|VPN connection|
-|?|TCP|device|your docker registry|Device will download application from some public docker registry|
-|?|?|device|your application destination|Any additional networking your application may do (e.g. upload to s3)|
+|Port|Protocol|Destination|Description|
+|---|---|---|---|
+|443|TCP|{api,auth,k3s-ipv6,portal,registry,s3,tunnel,vpn}.floto.science|HTTPS traffic to FLOTO services|
+|3128|TCP|vpn.floto.science|Remote command/control capabilities of device OS|
+|6443|TCP|k3s-server{01,02,03}.floto.science|HTTPS traffic to application control plane|
+|51820|UDP|k3s-server{01,02,03}.floto.science|VPN connection for application deployment|
+
+Additionally, in order for applications to start your device will need to pull the image from a docker registry. Applications running on your device likely will need to access the internet, for example to upload experiment results to S3. We recommend allowing all traffic to public internet, though if you are the only application user for a device, you can restrict this egress without breaking anything.
 
 ## Using the Dashboard
 
