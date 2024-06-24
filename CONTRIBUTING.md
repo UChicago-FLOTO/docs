@@ -8,7 +8,7 @@ Unsure where to start? Feel free to [post on our forum](https://github.com/orgs/
 
 ## Dashboard + API
 
-For contributing to the dashboard or API, see this guide.
+For contributing to the dashboard or API, see [this guide](https://github.com/UChicago-FLOTO/dashboard/blob/main/CONTRIBUTING.md).
 
 ## Documentation
 
