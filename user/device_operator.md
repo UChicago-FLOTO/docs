@@ -13,11 +13,12 @@ In order for FLOTO devices to work, the following network traffic must be permit
 
 |Port|Protocol|Source|Dest|Description|
 |---|---|---|---|---|
-|443|TCP||{api,auth,k3s,portal,registry,s3,tunnel,vpn}.floto.science|HTTPS traffic to FLOTO services|
-|443|TCP||{}.floto.science||
-|6443|TCP||k3s-{01,02,03}.floto.science|HTTPS traffic to application control plane|
-|51820|UDP||k3s-{01,02,03}.floto.science|VPN connection|
-
+|443|TCP|device|{api,auth,k3s-ipv6,portal,registry,s3,tunnel,vpn}.floto.science|HTTPS traffic to FLOTO services|
+|3128|TCP|device|vpn.floto.science|Remote command/control capabilities of device OS|
+|6443|TCP|device|k3s-server{01,02,03}.floto.science|HTTPS traffic to application control plane|
+|51820|UDP|device|k3s-server{01,02,03}.floto.science|VPN connection|
+|?|TCP|device|your docker registry|Device will download application from some public docker registry|
+|?|?|device|your application destination|Any additional networking your application may do (e.g. upload to s3)|
 
 ## Using the Dashboard
 
