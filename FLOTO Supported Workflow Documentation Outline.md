@@ -12,6 +12,7 @@ FLOTO consists of two core components:
 
 1. **Device Management Layer**: Built on openBalena, maintains VPN connections to devices for remote command execution and application deployment
 2. **Application Layer**: Built on Kubernetes, orchestrates containerized application deployments across distributed devices via a worker service installed on each device
+3. **Data Layer**: Provides data collection and management capabilities, including storage and transfer options for collected data
 
 ### **C. Documentation Structure**
 
@@ -144,6 +145,8 @@ FLOTO consists of two core components:
 
 ### **E. Application Request Process**
 
+Guidelines for requesting permission to deploy applications on FLOTO. See more details at [https://floto.cs.uchicago.edu/applications/](https://floto.cs.uchicago.edu/applications/) 
+
 1. **Required Information**:
    * Applicant details (name, institution, contact)
    * Project description and objectives
@@ -163,14 +166,14 @@ FLOTO consists of two core components:
 FLOTO provides infrastructure for running applications but *does not* handle data collection, storage, or publishing. These responsibilities belong to application developers.
 
 1. **Developer Responsibilities**:
-   * Implement your own data collection pipeline
-   * Only default Netrics application data can be included in FLOTO public dataset
-   * All other applications must handle their complete data lifecycle
+   * Implement your own data collection pipeline (we have off-the-shelf data uploader applications you can configure)
+   * Only default Netrics application data can be included in FLOTO public dataset published on the portal
+   * All other applications must handle their complete data publication and access
 
 2. **On-Device Storage Options**:
    * `/share`: Ephemeral storage shared between containers
    * `/public`: Persistent storage shared across jobs/users
-   * Neither option automatically transfers data off-device
+   * Neither option automatically transfers data off-device, but can be useful for shared persistent storage across jobs
 
 3. **Data Transfer Approaches**:
    * Add a data uploader service to your application
@@ -179,12 +182,12 @@ FLOTO provides infrastructure for running applications but *does not* handle dat
 
 4. **Uploader Configurations**:
 
-   a. **rclone-based Uploader**:
+   a. **rclone-based Uploader** (Add link):
    * Works with multiple storage types
    * Configure with `RCLONE_CONFIG_JSON`, `DIRECTORY`, and `TARGET_BUCKET` variables
    * Monitors specified directories for changes
 
-   b. **nm-mgmt-collect**:
+   b. **nm-mgmt-collect** (Add link):
    * Designed for Netrics data format
    * Configure with `NM_*` environment variables
    * Organizes data hierarchically by experiment/topic/device/date
@@ -342,9 +345,10 @@ FLOTO provides infrastructure for running applications but *does not* handle dat
    * Device enrollment: mtrichardson@uchicago.edu
 
 2. **Documentation**:
+   * Project Website: floto.cs.uchicago.edu
    * GitHub repositories: github.com/UChicago-FLOTO
    * API documentation: portal.floto.science/api/schema/swagger-ui
-   * Getting started guides: portal.floto.science/dashboard
+   * User Portal: portal.floto.science/dashboard
 
 ### **B. Technical Specifications**
 
